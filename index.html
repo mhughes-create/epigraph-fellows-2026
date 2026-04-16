@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Epigraph 2026 — Accepted Fellows</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+    :root {
+      --black: #0a0a0a;
+      --off-white: #f8f6f1;
+      --cream: #f2ede4;
+      --gold: #c9a84c;
+      --gold-light: #f0dfa0;
+      --sage: #6b8f71;
+      --muted: #7a7a7a;
+      --border: #e0dbd0;
+      --card-bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--black);
+      color: #fff;
+      padding: 60px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+    }
+    header .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.1;
+      font-weight: 700;
+      max-width: 640px;
+    }
+    header h1 span { color: var(--gold); }
+    header .subtitle {
+      margin-top: 16px;
+      color: #aaa;
+      font-size: 15px;
+      font-weight: 300;
+      max-width: 480px;
+    }
+    header .meta-row {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    header .meta-item { text-align: left; }
+    header .meta-item .num {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    header .meta-item .label {
+      font-size: 12px;
+      color: #888;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 32px 80px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+      margin-top: 60px;
+    }
+    .section-header:first-child { margin-top: 0; }
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .pill-nominee {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .pill-applicant {
+      background: var(--sage);
+      color: #fff;
+    }
+    .section-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      margin-left: auto;
+    }
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 32px;
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── FELLOW CARD ── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-type-nominee .card-top { background: #fdf8ee; }
+    .card-type-applicant .card-top { background: #f0f5f1; }
+
+    .name-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .name-block h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.2;
+    }
+    .name-block .email {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .avatar-nominee { background: var(--gold); color: var(--black); }
+    .avatar-applicant { background: var(--sage); color: #fff; }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.05);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: background 0.15s;
+    }
+    .link-chip:hover { background: rgba(0,0,0,0.1); }
+    .link-chip svg { width: 10px; height: 10px; opacity: 0.6; }
+
+    /* ── CARD BODY ── */
+    .card-body {
+      padding: 20px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .field {}
+    .field-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+    .field-value {
+      font-size: 13.5px;
+      color: #222;
+      line-height: 1.55;
+    }
+
+    /* AI comfort badge */
+    .comfort-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .comfort-beginner { background: #eef2ff; color: #3730a3; }
+    .comfort-intermediate { background: #f0fdf4; color: #166534; }
+    .comfort-advanced { background: #fefce8; color: #854d0e; }
+
+    /* Tools tags */
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tool-tag {
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    /* Pathway badge */
+    .pathway-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--black);
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 12px;
+      color: #aaa;
+      border-top: 1px solid var(--border);
+    }
+    footer strong { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Fellowship Program · 2026</div>
+  <h1>The <span>Epigraph</span> 2026<br>Accepted Fellows</h1>
+  <p class="subtitle">The following nominees and applicants were selected for the 2026 cohort.</p>
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="num">5</div>
+      <div class="label">Nominated</div>
+    </div>
+    <div class="meta-item">
+      <div class="num">2</div>
+      <div class="label">Self-Applied</div>
+    </div>
+    <div class="meta-item">
+      <div class="num">7</div>
+      <div class="label">Total Fellows</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── NOMINEES ── -->
+  <div class="section-header">
+    <h2>Nominated Fellows</h2>
+    <span class="section-count">5 fellows</span>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="cards-grid">
+
+    <!-- Bianca Lambert -->
+    <div class="card card-type-nominee">
+      <div class="card-top">
+        <div class="name-row">
+          <div class="name-block">
+            <h3>Bianca Lambert</h3>
+            <div class="email">biancalambertbc@gmail.com</div>
+          </div>
+          <div class="avatar avatar-nominee">BL</div>
+        </div>
+        <div class="links-row">
+          <a class="link-chip" href="https://biancalambert.my.canva.site/" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Portfolio
+          </a>
+          <a class="link-chip" href="https://www.imdb.com/name/nm8173516/" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            IMDb
+          </a>
+          <a class="link-chip" href="https://mubi.com/en/us/films/super-high-a-period-piece" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            MUBI
+          </a>
+          <a class="link-chip" href="https://vimeo.com/manage/videos/1074378342" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Super High <span style="opacity:0.5;margin-left:3px;">· pw: bink</span>
+          </a>
+          <a class="link-chip" href="https://vimeo.com/manage/videos/1122714538" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            My Black is Cracking <span style="opacity:0.5;margin-left:3px;">· pw: mbic</span>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <div class="field-label">Work Sample</div>
+          <div class="field-value">Festival cuts of two animated shorts that stand alone, but are part of a larger anthology I'm building around Black women's health.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Comfort Level</div>
+          <span class="comfort-badge comfort-intermediate">● Intermediate — I use some tools regularly</span>
+        </div>
+        <div class="field">
+          <div class="field-label">Tools Used</div>
+          <div class="tools-row">
+            <span class="tool-tag">ChatGPT / Claude (writing/development)</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Tech Turning Point</div>
+          <div class="field-value">Learning Premiere changed how I direct. I was at BuzzFeed, expected to edit, and no one actually taught me like they said they would‚ so I taught myself. It felt like learning a new language while being expected to already be fluent. I stayed late, came in early, and worked weekends unpaid trying to figure it out. It was really difficult. Once it clicked, it changed everything. Editing taught me rhythm‚ when something drags, when it needs to snap forward, and how performance is shaped in the cut.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Concern</div>
+          <div class="field-value">I love 2D animation, and what concerns me is how quickly people treat it as something that can be replicated with a prompt. There's a difference between generating an image and building a visual language over time with intention and collaboration. Animation is inherently collaborative‚ every frame is shaped by multiple artists‚ and I never want that to go away. My concern isn't the tools, but the idea that speed could replace craft.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- John Burr -->
+    <div class="card card-type-nominee">
+      <div class="card-top">
+        <div class="name-row">
+          <div class="name-block">
+            <h3>John Burr</h3>
+            <div class="email">john.burr@gmail.com</div>
+          </div>
+          <div class="avatar avatar-nominee">JB</div>
+        </div>
+        <div class="links-row">
+          <a class="link-chip" href="https://imdb.me/johnburr" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            IMDb
+          </a>
+          <a class="link-chip" href="https://youtube.com/watch?v=poJwgXW-qrk" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            The Gates Trailer
+          </a>
+          <a class="link-chip" href="https://youtube.com/watch?v=rooCFaczeXQ" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Work Sample
+          </a>
+          <a class="link-chip" href="https://amazon.com/gp/vid" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Muse (Amazon)
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <div class="field-label">Work Sample</div>
+          <div class="field-value">I am including a link to the trailer for the Gates. The studio may be able to send a personal, password-protected screener upon direct request. I've also linked to my previous feature, Muse.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Comfort Level</div>
+          <span class="comfort-badge comfort-beginner">● Beginner — aware of tools, minimal use</span>
+        </div>
+        <div class="field">
+          <div class="field-label">Tools Used</div>
+          <div class="tools-row">
+            <span class="tool-tag">ChatGPT / Claude (writing/development)</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Tech Turning Point</div>
+          <div class="field-value">The screenplay for the Gates was inspired in part by the film Judgment Night, which I had seen as a kid. I used it as a fun genre framework for the personal story I wanted to tell about race, class and culture in my home town in Texas. After I wrote the script , I plugged the log line into ChatGPT for a one-sheet to make sure my script hit similar important structural points but wasn't too formulaic.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Concern</div>
+          <div class="field-value">I think many concerns are overstated, but I do worry about the next generation growing up with slop and choosing that kind of entertainment over traditional film/tv just enough that the industries suffer.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Justice Whitaker -->
+    <div class="card card-type-nominee">
+      <div class="card-top">
+        <div class="name-row">
+          <div class="name-block">
+            <h3>Justice Whitaker</h3>
+            <div class="email">justice@shangolightfilms.com</div>
+          </div>
+          <div class="avatar avatar-nominee">JW</div>
+        </div>
+        <div class="links-row">
+          <a class="link-chip" href="http://www.JusticeAWhitaker.com" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Website
+          </a>
+          <a class="link-chip" href="https://www.imdb.com/name/nm1337624" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            IMDb
+          </a>
+          <a class="link-chip" href="https://vimeo.com/733401899" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Milestone Generations
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <div class="field-label">Work Sample</div>
+          <div class="field-value">This is Milestone Generations the complete 1hr documentary. This film is about representation in the comic industry and follows a common theme in my work, BLACK FIRSTS. The Milestone creators were pioneers in the early 90s and I see myself as a pioneer in using tech to empower Black voices, in the same way they did. Also working with Reggie Hudlin, Method Man &amp; DC Comics was amazing, and I am looking to attach Meth to the film Singularity that I will be developing during the Epigraph Fellowship.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Comfort Level</div>
+          <span class="comfort-badge comfort-intermediate">● Intermediate — use some tools regularly</span>
+        </div>
+        <div class="field">
+          <div class="field-label">Tools Used</div>
+          <div class="tools-row">
+            <span class="tool-tag">ChatGPT / Claude (writing/development)</span>
+            <span class="tool-tag">Runway / Sora (video generation)</span>
+            <span class="tool-tag">Adobe Firefly / Photoshop AI</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Tech Turning Point</div>
+          <div class="field-value">I was teaching HS &amp; I received a grant to buy my first DSLR and Ipad and travel to Cuba to record narrative testimony from Cuban people for 3 weeks. The tech changed my life &amp; experience. On the trip I couriered video messages between a man I met in the Bahamas and his daughter in Cuba. My political privilege &amp; access to tech positioned me to change someones life, delivering a message in person (via ipad) of video letters from father and daughter. I see tech as a tool for change.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Concern</div>
+          <div class="field-value">Ecological Impact. My goal is to build sustainable data centers &amp; media schools in Africa to support the 2033 youth and tech boom - (with CLF &amp; Macro :) - I directed a Doc with the National Urban League focused on the xAI data center in TN where Elon has disregarded the public health concerns. Speaking with people in Boxtown helped me re-evaluate my perspective on how &amp; why we use AI tools. I believe we must use this tech to envision &amp; design positive futures for Black people globally.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nick Barili -->
+    <div class="card card-type-nominee">
+      <div class="card-top">
+        <div class="name-row">
+          <div class="name-block">
+            <h3>Nick Barili</h3>
+            <div class="email">nick@hardknock.tv</div>
+          </div>
+          <div class="avatar avatar-nominee">NB</div>
+        </div>
+        <div class="links-row">
+          <a class="link-chip" href="https://www.imdb.com/name/nm6862432/" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            IMDb
+          </a>
+          <a class="link-chip" href="https://vimeo.com/912350864" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Work Sample <span style="opacity:0.5;margin-left:3px;">· pw: DLC</span>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <div class="field-label">Work Sample</div>
+          <div class="field-value">In New York, I return to the birthplace of Hip Hop to explore a deeper truth‚ this culture was born from the shared experience of Black and Latino communities. The story was first told as a 90-minute feature that premiered at the Tribeca Film Festival before being condensed into a one-hour television format.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Comfort Level</div>
+          <span class="comfort-badge comfort-intermediate">● Intermediate — use some tools regularly</span>
+        </div>
+        <div class="field">
+          <div class="field-label">Tools Used</div>
+          <div class="tools-row">
+            <span class="tool-tag">ChatGPT / Claude (writing/development)</span>
+            <span class="tool-tag">Midjourney / DALLE (visual ideation)</span>
+            <span class="tool-tag">Adobe Firefly / Photoshop AI</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Tech Turning Point</div>
+          <div class="field-value">Launching Hard Knock TV on YouTube in 2006 was a turning point for me. It allowed me to bypass traditional gatekeepers and tell the kind of stories I wasn't seeing elsewhere, directly to an audience that was already there. As a multi-hyphenate, I've always had to be resourceful without access to big budgets. Technology allows me to move at the speed of culture, execute at a higher level, and maintain creative control and cultural authenticity.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Concern</div>
+          <div class="field-value">One concern I have is that as these tools scale, they risk diluting perspective‚ where stories begin to feel generated rather than lived. There's also the risk of unequal access, where certain communities are left behind, and built-in biases that shape which stories are seen. As a filmmaker, I'm focused on making sure technology amplifies cultural specificity and lived experience, rather than replacing it.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sulayman Tahir -->
+    <div class="card card-type-nominee">
+      <div class="card-top">
+        <div class="name-row">
+          <div class="name-block">
+            <h3>Sulayman Tahir</h3>
+            <div class="email">directorlaytahir@gmail.com</div>
+          </div>
+          <div class="avatar avatar-nominee">ST</div>
+        </div>
+        <div class="links-row">
+          <a class="link-chip" href="https://www.imdb.com/name/nm7730430/" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            IMDb
+          </a>
+          <a class="link-chip" href="https://www.youtube.com/watch?v=bpmtrMApUYM" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Peripheral (BET+)
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <div class="field-label">Work Sample</div>
+          <div class="field-value">This is my debut feature film Peripheral, distributed on BET+. The sample highlights my approach to character-driven suspense and psychological tension while exploring identity, belonging, and isolation through the perspective of a Black woman in an unfamiliar environment.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Comfort Level</div>
+          <span class="comfort-badge comfort-intermediate">● Intermediate — use some tools regularly</span>
+        </div>
+        <div class="field">
+          <div class="field-label">Tools Used</div>
+          <div class="tools-row">
+            <span class="tool-tag">ChatGPT / Claude (writing/development)</span>
+            <span class="tool-tag">Runway / Sora (video generation)</span>
+            <span class="tool-tag">Midjourney / DALLE (visual ideation)</span>
+            <span class="tool-tag">Adobe Firefly / Photoshop AI</span>
+            <span class="tool-tag">DaVinci Resolve AI features</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Tech Turning Point</div>
+          <div class="field-value">Visual reference tools like ShotDeck helped shape tone and visual language during development. On projects like Peripheral, creating custom LUTs and baking them into dailies allowed the footage to reflect the intended look from the moment we began shooting.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">AI Concern</div>
+          <div class="field-value">My main concern is over dependence. I see AI the same way I see CGI or VFX as a supplementary tool, not a foundational one. It should enhance strong ideas and storytelling, not replace the core craft and fundamentals of filmmaking.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /nominees grid -->
+
+
+  <!-- ── APPLICANTS ── -->
+  <div class="section-header" style="margin-top:72px">
+    <h2>Self-Applied Fellows</h2>
+    <span class="section-count">2 fellows</span>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="cards-grid">
+
+    <!-- Tedra Wilson -->
+    <div class="card card-type-applicant">
+      <div class="card-top">
+        <div class="name-row">
+          <div class="name-block">
+            <h3>Tedra Wilson</h3>
+            <div class="email">artistlandstudios@gmail.com</div>
+          </div>
+          <div class="avatar avatar-applicant">TW</div>
+        </div>
+        <div class="links-row">
+          <a class="link-chip" href="https://tttheartist.com/" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Portfolio
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <div class="field-label">Project to Develop</div>
+          <div class="field-value">My project is called "The Magic Needle" a Black sci-fi fantasy musical adventure set between Harlem and an alternate universe called "The Quilt." It follows an aspiring designer pulled from her mundane 9-to-5 into a world where fashion controls identity and power and she must fix the system to restore balance. Using AI, I'm prototyping the worlds and characters as part of a visually-driven film that extends into standalone video art.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Current AI Use</div>
+          <div class="field-value">Yes, AI is already integrated into my creative process, particularly in early development, where I use it to prototype environments, character design, outlines, and treatments. I've also used AI to create short films and proof-of-concept pieces.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Support Needed</div>
+          <div class="field-value">I'm at a point where my ideas are expanding in scale, and I'm ready to build them with more structure and intention. Access to mentorship, tools, and a community that understands both storytelling and emerging tech would help me elevate both the project and my practice.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Production-Ready by July 2026</div>
+          <div class="field-value">For me, production-ready means having a fully developed and packaged project that can be confidently pitched to a studio or production company. This includes a strong visual deck, world bible, proof-of-concept materials, and a clear film outline of the story and characters, with AI-driven visuals developed enough to be experienced through galleries or immersive, non-traditional spaces right away.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Why The Epigraph Fellowship?</div>
+          <div class="field-value">I believe The Epigraph Fellowship aligns directly with where my work is evolving. It feels like a fellowship designed for artists like myself who are thinking beyond traditional boundaries.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Distribution Pathway</div>
+          <span class="pathway-badge">Studio Feature</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chazitear Martin -->
+    <div class="card card-type-applicant">
+      <div class="card-top">
+        <div class="name-row">
+          <div class="name-block">
+            <h3>Chazitear Martin</h3>
+            <div class="email">happytearsllc@gmail.com</div>
+          </div>
+          <div class="avatar avatar-applicant">CM</div>
+        </div>
+        <div class="links-row">
+          <a class="link-chip" href="http://www.chazitear.com" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            Website
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <div class="field-label">Project to Develop</div>
+          <div class="field-value">I would love to develop my feature film, Covering Milo Shabazz, set in the hustle and bustle of New York City and Cape Town, South Africa. An enchanting love story that begins when a sharp-tongued journalist is sent to South Africa to cover a hot-headed boxing champ with a tragic past, and what starts as a career detour turns into a soulful collision of grief, legacy, and unexpected love, forcing them both to fight for something real for the first time in their lives.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Current AI Use</div>
+          <div class="field-value">Currently, I'll use AI to bring up sources for quicker access to scholarly articles and fact checking, and sometimes grammar checks.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Support Needed</div>
+          <div class="field-value">I am eagerly seeking support in the form of a management team that understands my voice, and knows how to put my name in rooms that my resume can't just yet, and allot me the opportunity to build relationships that catapult me to the next level.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Production-Ready by July 2026</div>
+          <div class="field-value">Production-ready for Covering Milo Shabazz means funding secured, crew hired, film scheduled, cast locked, and locations secured.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Why The Epigraph Fellowship?</div>
+          <div class="field-value">I am interested in The Epigraph Fellowship because I am a firm believer that the world will evolve around you if you don't learn to adapt, and technology isn't slowing down in any shape or form.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Distribution Pathway</div>
+          <span class="pathway-badge">I'd love to do this project as apart of a Festival Circuit like Sundance Lab, but I am currently looking into independent financing with a few of my producing partners.</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /applicants grid -->
+
+</main>
+
+<footer>
+  <strong>The Epigraph 2026</strong> · Applicant &amp; Nomination Submissions · Portfolio Company Fellows
+</footer>
+
+</body>
+</html>
